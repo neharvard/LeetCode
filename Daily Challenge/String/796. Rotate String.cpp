@@ -7,7 +7,6 @@
 //Approach-1 (Brute Force)
 //T.C : O(N)
 //S.C : O(N)
-
 class Solution {
 public:
     bool rotateString(string s, string goal) {
@@ -35,5 +34,40 @@ public:
         }
 
         return true;
+    }
+};
+
+
+//Approach-2 (Brute Force Check all rotations)
+//T.C : O(N^2)
+//S.C : O(1)
+class Solution {
+public:
+    bool rotateString(string s, string goal) {
+        int sz = s.size();
+        
+        for(int i=0; i<sz; i++){
+            rotate(s.begin(), s.begin()+1 ,s.end());
+            cout<<"ss:"<<s<<endl;
+            if(s == goal) return true;
+        }
+        return false;
+    }
+};
+
+
+//Approach-3 (Concatenation with itself contains all possible rotations)
+//T.C : O(N)
+//S.C : O(1)
+// NOTE :         If concatenate a String with itself, it will contain all Rotations as a Substring in it
+class Solution {
+public:
+    bool rotateString(string s, string goal) {
+
+        if(s.size() != goal.size()) return false;
+
+        if((s+s).find(goal) != string::npos) return true;
+
+        return false;
     }
 };
