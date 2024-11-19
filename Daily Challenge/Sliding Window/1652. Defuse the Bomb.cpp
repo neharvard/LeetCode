@@ -36,7 +36,7 @@ public:
 
 //Approach-2 (Sliding Window)
 //T.C : O(n)
-//S.C : O(1)
+//S.C : O(n)
 class Solution {
 public:
     vector<int> decrypt(vector<int>& code, int k) {
