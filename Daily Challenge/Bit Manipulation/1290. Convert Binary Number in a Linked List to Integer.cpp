@@ -4,7 +4,7 @@
 
 
 /************************************************************ C++ *****************************************************/
-//Approach-2 (Using bit manipulation to form the decimal number)
+//Approach-1 (Using bit manipulation to form the decimal number)
 //T.C : O(n)
 //S.C : O(1)
 class Solution {
