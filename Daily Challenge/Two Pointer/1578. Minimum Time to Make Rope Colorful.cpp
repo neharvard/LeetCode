@@ -4,7 +4,7 @@
 */
 
 /************************************************************************ C++ ************************************************************************************/
-//Approach - Two pointer 
+//Approach:1 - Two pointer 
 //T.C : O(n)
 //S.C : O(1)
 class Solution {
@@ -32,6 +32,31 @@ public:
             // cout<<"prev: "<<prev<<" curr: "<<curr<<endl;
             prev = curr; 
             j = i;
+        }
+
+        return ans;
+    }
+};
+
+
+
+//Approach:2 - Greedily moving ahead
+//T.C : O(n)
+//S.C : O(1)
+/// More Cleaner Approach
+class Solution {
+public:
+    int minCost(string colors, vector<int>& neededTime) {
+        int sz = colors.size();
+        int prevMax = 0, ans = 0;
+
+        for(int i=0; i<sz; i++){
+            if(i> 0 && colors[i] != colors[i-1]) prevMax = 0;
+            
+            int curr = neededTime[i];
+
+            ans += min(prevMax, curr);
+            prevMax = max(prevMax, curr);
         }
 
         return ans;
