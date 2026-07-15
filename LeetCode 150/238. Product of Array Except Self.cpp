@@ -32,3 +32,30 @@ public:
         return ans;
     }
 };
+
+
+//Approach-2 (using 2 passes following the concept of prefix & suffix in the output array)
+// TC: O(n)
+// SC: O(1)
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        int sz = nums.size();
+        vector<int>ans(sz);
+
+        int prefix = 1;
+        ans[0] = prefix;
+        for(int i=1; i<sz; i++){
+            prefix *= nums[i-1]; //cout<<"p: "<<prefix<<endl;
+            ans[i] = prefix;
+        }
+
+        int suffix = 1;
+        for(int i=sz-2; i>=0; i--){
+            suffix *= nums[i+1]; //cout<<"s: "<<suffix<<endl;
+            ans[i] *= suffix;
+        }
+        
+        return ans;
+    }
+};
