@@ -1,0 +1,45 @@
+/*
+    Company Tags                : 
+    Leetcode Link               : https://leetcode.com/problems/zigzag-conversion 
+*/
+//Approach-1: Simulate the zigzag traversal by tracking row indices and direction.
+//TC: O(N)
+//SC: O(M)
+class Solution {
+public:
+    string convert(string s, int numRows) {
+        int sz = s.size();
+        if(sz == 1 || numRows == 1) return s;
+
+        string rowStrings[numRows];
+        int idx=0,i=0,j=0;
+
+        while(idx < sz){
+            while(idx<sz && i<numRows){
+                rowStrings[i].push_back(s[idx++]);
+                i++;
+            }
+
+            i -= 2;
+            j++;
+
+            while(idx<sz && i>=0){
+                rowStrings[i].push_back(s[idx++]);
+                i--;
+                j++;
+            }
+
+            i = 1;
+            j--;
+        }
+
+        // for(auto &it : rowStrings) cout<<it<<" "; cout<<endl;
+
+        string ans = "";
+        for(int i = 0; i<numRows; i++){
+            ans.append(rowStrings[i]);
+        }
+
+        return ans;
+    }
+};
