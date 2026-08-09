@@ -35,7 +35,7 @@ public:
 
 //Approach-2: using static storage
 // TC : O(n)
-// SC: O(1)
+// SC: O(26) = O(1)
 class Solution {
 public:
     bool canConstruct(string ransomNote, string magazine) {
